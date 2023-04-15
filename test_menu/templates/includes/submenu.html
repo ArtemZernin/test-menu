@@ -1,0 +1,25 @@
+{% load menu %}
+{% if m_items %}
+  
+  <ul class="list-group">  
+    
+    {% for m_item in m_items %}
+        <li class="list-group-item" >
+          {% with path_t='/'|add:m_item.slug|add:'/'|add:m_item.title|add:'/' %}
+          {{ request.path }}-{{ path_t }}
+          {% if request.path == path_t %}
+          <a 
+        	href="{{ m_item.url }}" 
+          style="font-weight:bolder;"
+			  	>{{ m_item.title }}</a>       
+          {% else %}
+          <a 
+        	href="{{ m_item.url }}"
+			  	>{{ m_item.title }}</a> 
+          {% endif %}
+          {% endwith %}
+          {% draw_submenu m_item menu_items %}
+        </li> 
+    {% endfor %}
+  </ul> 
+{% endif %}

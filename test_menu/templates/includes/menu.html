@@ -1,5 +1,9 @@
-        <li class="nav-item"> 
-          <a class="nav-link {% if view_name  == 'about:author' %}active{% endif %}"
-        	href=""
-			  	>Об авторе</a>
-        </li> 
+{% load menu %}   
+    {% for m_item in menu_items %}
+       {% if m_item.parent == None %}
+        {{ request.path }}0
+          {% draw_submenu m_item menu_items %}          
+       
+        {% endif %} 
+    {% endfor %}
+  
