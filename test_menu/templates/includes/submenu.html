@@ -5,20 +5,17 @@
     
     {% for m_item in m_items %}
         <li class="list-group-item" >
-          {% with path_t='/'|add:m_item.slug|add:'/'|add:m_item.title|add:'/' %}
-          {{ request.path }}-{{ path_t }}
-          {% if request.path == path_t %}
+          {% with path_t='/'|add:m_item.slug|add:'/' %}
+          
+          
           <a 
-        	href="{{ m_item.url }}" 
-          style="font-weight:bolder;"
-			  	>{{ m_item.title }}</a>       
-          {% else %}
-          <a 
-        	href="{{ m_item.url }}"
-			  	>{{ m_item.title }}</a> 
-          {% endif %}
+        	href="{% url 'page' m_item.slug %}" 
+          class="{% if request.path == path_t %} active{% endif %}"
+          >{{ m_item.title }}</a>       
+          
+          {% draw_submenu m_item menu_items list_tree %}
           {% endwith %}
-          {% draw_submenu m_item menu_items %}
+          
         </li> 
     {% endfor %}
   </ul> 

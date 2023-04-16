@@ -20,5 +20,5 @@ from menu import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('<str:slug>/<str:title>/', views.page, name='page')
+    path('<slug:slug>/', views.page, name='page')
 ]

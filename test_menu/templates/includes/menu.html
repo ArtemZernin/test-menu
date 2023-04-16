@@ -1,8 +1,8 @@
 {% load menu %}   
     {% for m_item in menu_items %}
        {% if m_item.parent == None %}
-        {{ request.path }}0
-          {% draw_submenu m_item menu_items %}          
+        
+          {% draw_submenu m_item menu_items list_tree %}          
        
         {% endif %} 
     {% endfor %}
