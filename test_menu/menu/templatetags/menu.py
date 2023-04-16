@@ -15,8 +15,7 @@ def draw_menu(context, name):
             activ_item = menu_item
             while activ_item.parent is not None:
                 list_tree.append(activ_item)
-                t = activ_item.parent
-                activ_item = t
+                activ_item = activ_item.parent
             break
     return {'menu_items': menu_list,
             'request': context['request'],
